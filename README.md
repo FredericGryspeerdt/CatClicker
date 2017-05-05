@@ -8,5 +8,6 @@ I will use this basic project to learn other technologies, like:
 
 * Gulp
 * TypeScript
-* ...
+* Continuous integration with Travis
+* Testing
 
