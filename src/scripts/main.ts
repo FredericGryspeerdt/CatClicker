@@ -22,7 +22,7 @@ class Cat {
 
 window.onload = function () {
     let cats = [];
-    let cat1 = new Cat('Melchior', './assets/images/melchior.jpg');
+    let cat1 = new Cat('Melchior', 'images/melchior.jpg');
     let cat2 = new Cat('Balthazar', 'http://lh3.ggpht.com/nlI91wYNCrjjNy5f-S3CmVehIBM4cprx-JFWOztLk7vFlhYuFR6YnxcT446AvxYg4Ab7M1Fy0twaOCWYcUk=s0#w=640&h=426');
 
     cats.push(cat1);
