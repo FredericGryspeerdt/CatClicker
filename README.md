@@ -13,4 +13,5 @@ I will use this basic project to learn other technologies, like:
 * TypeScript
 * Continuous integration with Travis
 * Testing
-
+* style with Material Design Lite
+* Git flow
