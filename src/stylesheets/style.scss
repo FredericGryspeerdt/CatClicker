@@ -1,3 +1,13 @@
-.amount{
-    color: black;
+.cat-card{
+    &.mdl-card{
+        height: 100%;
+    }
+
+    .mdl-card__title{
+        height: 160px;
+        background: center / cover;
+        .mdl-card__title-text{
+            background-color: rgb(255,64,129); 
+        }
+    }
 }
