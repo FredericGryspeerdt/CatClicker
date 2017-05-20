@@ -12,7 +12,7 @@ before_script:
   - npm install -g firebase-tools
 
 script:
-  - gulp build-dev
+  - gulp build-release
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
