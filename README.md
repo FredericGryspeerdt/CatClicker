@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/FredericGryspeerdt/CatClicker.svg?branch=master)](https://travis-ci.org/FredericGryspeerdt/CatClicker)
+
 # CatClicker
 A simple project for learning purposes.
 
