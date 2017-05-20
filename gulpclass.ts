@@ -88,6 +88,11 @@ export class Gulpfile {
         return ["clean-dist", ["build-css", "build-js", "copy-html", "copy-images", "serve-bs", "watch"]];
     }
 
+    @SequenceTask("build-release")
+    buildRelease() {
+        return ["clean-dist", ["build-css", "build-js", "copy-html", "copy-images"]];
+    }
+
     @Task("watch")
     watch() {
         gulp.watch(paths.scripts.src, ["build-js-reload"]);
