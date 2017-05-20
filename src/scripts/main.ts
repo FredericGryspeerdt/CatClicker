@@ -4,19 +4,19 @@ class Cat {
     id: number;
     name: string;
     picture: string;
-    clickCounter: number;
+    clickCount: number;
 
     // constructor
     constructor(name: string, picture: string) {
         this.id = Cat.count++;
         this.name = name;
         this.picture = picture;
-        this.clickCounter = 0;
+        this.clickCount = 0;
     }
 
     // functions
     addClick(): void {
-        this.clickCounter++;
+        this.clickCount++;
     }
 }
 
@@ -29,20 +29,38 @@ window.onload = function () {
     cats.push(cat2);
 
     for (let cat of cats) {
-        let htmlBuilder = "<div class='cat'>";
-        htmlBuilder += "<h1>" + cat.name + "<h1>";
-        htmlBuilder += "<img id='" + cat.id + "' src='" + cat.picture + "' alt='kitten' height='auto' width='200px'>";
-        htmlBuilder += "<p>Number of clicks: <span id='" + cat.id + "_amount'>" + cat.clickCounter + "</span></p>";
-        document.getElementById("cats").insertAdjacentHTML('beforeend', htmlBuilder);
+        // build cat-card
+        let htmlBuilderCard = '<div id="card_' + cat.id + '" class="hidden mdl-card cat-card mdl-shadow--8dp mdl-cell mdl-cell--4-col mdl-cell--1-offset-desktop">';
+        htmlBuilderCard += '<div class="mdl-card__title" style="background-image: url(' + cat.picture + ')">';
+        htmlBuilderCard += '<h2 class="mdl-card__title-text">' + cat.name + '</h2>';
+        htmlBuilderCard += '</div>';
+        htmlBuilderCard += '<div class="mdl-card__supporting-text">Click count:<span id="' + cat.id.toString() + '_amount"> ' + cat.clickCount + '</span></div>';
+        htmlBuilderCard += '</div>';
 
-        let catImage = document.getElementById(cat.id.toString()),
-            amount = document.getElementById(cat.id.toString() + '_amount');
+        // add new cat card
+        var catsWrapper = document.getElementById("cats-wrapper");
+        catsWrapper.insertAdjacentHTML('beforeend', htmlBuilderCard);
 
-        catImage.addEventListener('click', function (e) {
-            cat.clickCounter++;
-            amount.innerHTML = cat.clickCounter.toString();
+        // build cat-list
+        let htmlBuilderList = '<li class="mdl-list__item"><span id="list_' + cat.id + '" class="mdl-list__item-primary-content">' + cat.name + '</span></li>';
+        var catList = document.getElementById("cat-list");
+        catList.insertAdjacentHTML('beforeend', htmlBuilderList);
+
+        // add click to cat item in list
+        let catListItem = document.getElementById('list_' + cat.id);
+        let catCard = document.getElementById('card_' + cat.id);
+        catListItem.addEventListener('click', function(e){
+            catCard.classList.remove('hidden'); 
+        });
+        
+        let amount = document.getElementById(cat.id.toString() + '_amount');
+
+        catCard.addEventListener('click', function (e) {
+            cat.clickCount++;
+            amount.innerHTML = cat.clickCount.toString();
         }, false);
     }
+
 
 
 };

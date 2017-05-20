@@ -15,3 +15,5 @@ I will use this basic project to learn other technologies, like:
 * Testing
 * style with Material Design Lite
 * Git flow
+
+Ignore this: just a message to have a commit in the release branch.
