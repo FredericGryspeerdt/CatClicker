@@ -30,24 +30,37 @@ window.onload = function () {
 
     for (let cat of cats) {
         // build cat-card
-        let htmlBuilder = '<div id="' + cat.id + '" class="mdl-card cat-card mdl-shadow--8dp mdl-cell mdl-cell--4-col mdl-cell--1-offset-desktop">';
-        htmlBuilder += '<div class="mdl-card__title" style="background-image: url(' + cat.picture + ')">';
-        htmlBuilder += '<h2 class="mdl-card__title-text">' + cat.name + '</h2>';
-        htmlBuilder += '</div>';
-        htmlBuilder += '<div class="mdl-card__supporting-text">Click count:<span id="' + cat.id.toString() + '_amount"> ' + cat.clickCount + '</span></div>';
-        htmlBuilder += '</div>';
+        let htmlBuilderCard = '<div id="card_' + cat.id + '" class="hidden mdl-card cat-card mdl-shadow--8dp mdl-cell mdl-cell--4-col mdl-cell--1-offset-desktop">';
+        htmlBuilderCard += '<div class="mdl-card__title" style="background-image: url(' + cat.picture + ')">';
+        htmlBuilderCard += '<h2 class="mdl-card__title-text">' + cat.name + '</h2>';
+        htmlBuilderCard += '</div>';
+        htmlBuilderCard += '<div class="mdl-card__supporting-text">Click count:<span id="' + cat.id.toString() + '_amount"> ' + cat.clickCount + '</span></div>';
+        htmlBuilderCard += '</div>';
 
-        document.getElementById("cats-wrapper").insertAdjacentHTML('beforeend', htmlBuilder);
+        // add new cat card
+        var catsWrapper = document.getElementById("cats-wrapper");
+        catsWrapper.insertAdjacentHTML('beforeend', htmlBuilderCard);
 
+        // build cat-list
+        let htmlBuilderList = '<li class="mdl-list__item"><span id="list_' + cat.id + '" class="mdl-list__item-primary-content">' + cat.name + '</span></li>';
+        var catList = document.getElementById("cat-list");
+        catList.insertAdjacentHTML('beforeend', htmlBuilderList);
 
-        let catImage = document.getElementById(cat.id.toString()),
-            amount = document.getElementById(cat.id.toString() + '_amount');
+        // add click to cat item in list
+        let catListItem = document.getElementById('list_' + cat.id);
+        let catCard = document.getElementById('card_' + cat.id);
+        catListItem.addEventListener('click', function(e){
+            catCard.classList.remove('hidden'); 
+        });
+        
+        let amount = document.getElementById(cat.id.toString() + '_amount');
 
-        catImage.addEventListener('click', function (e) {
+        catCard.addEventListener('click', function (e) {
             cat.clickCount++;
             amount.innerHTML = cat.clickCount.toString();
         }, false);
     }
+
 
 
 };
